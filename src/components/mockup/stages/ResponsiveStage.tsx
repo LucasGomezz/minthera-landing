@@ -2,7 +2,7 @@
 
 import { motion, useTransform, type MotionValue } from "motion/react";
 import { ArrowRight, Menu } from "lucide-react";
-import { Sparkle } from "@/components/brand/Sparkle";
+import { Mark } from "@/components/brand/Mark";
 import { stagger } from "../geometry";
 import { PetalArt } from "../parts/PetalArt";
 import { HEADLINE } from "../parts/typing";
@@ -48,8 +48,8 @@ export function ResponsiveStage({ p3 }: { p3: MotionValue<number> }) {
 
       <div className="relative flex h-full flex-col gap-[2.2cqw] px-[3cqw] pt-[2.6cqw]">
         <motion.div className="flex shrink-0 items-center justify-between" style={nav}>
-          <span className="flex items-center gap-[0.8cqw] text-[1.7cqw] font-bold tracking-[0.18em]">
-            <Sparkle className="size-[1.9cqw] text-primary" />
+          <span className="flex items-center gap-[0.9cqw] text-[1.6cqw] font-medium tracking-[0.28em]">
+            <Mark className="h-[2.2cqw] w-auto text-fg" />
             MINTHERA
           </span>
           <Menu className="size-[2.6cqw] text-muted" strokeWidth={1.5} />

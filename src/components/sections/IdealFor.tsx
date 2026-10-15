@@ -1,5 +1,5 @@
 import { Check } from "lucide-react";
-import { Sparkle } from "@/components/brand/Sparkle";
+import { Mark } from "@/components/brand/Mark";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { idealFor } from "@/content/site";
@@ -26,10 +26,7 @@ export function IdealFor() {
 
         <Reveal delay={0.1}>
           <div className="relative overflow-hidden rounded-3xl border border-line bg-surface/70 p-8 backdrop-blur-sm sm:p-10">
-            <Sparkle
-              aria-hidden="true"
-              className="absolute -top-6 -right-6 size-28 text-primary/[0.06]"
-            />
+            <Mark className="absolute -top-4 -right-6 h-24 w-auto text-primary/[0.06]" />
             <ul className="relative divide-y divide-line">
               {idealFor.items.map((item) => (
                 <li key={item} className="flex items-center gap-4 py-4 first:pt-0 last:pb-0">

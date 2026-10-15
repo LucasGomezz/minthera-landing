@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useTransform } from "motion/react";
-import { Sparkle } from "@/components/brand/Sparkle";
+import { Mark } from "@/components/brand/Mark";
 import { cn } from "@/lib/cn";
 import { useStory } from "@/components/story/StoryProvider";
 import { BuildStage } from "./BuildStage";
@@ -95,7 +95,7 @@ export function BrowserMockup({ compact = false }: { compact?: boolean }) {
             className="absolute inset-0 grid place-items-center"
             style={{ opacity: emptyOpacity }}
           >
-            <Sparkle className="size-[4cqw] text-line" />
+            <Mark className="h-[5cqw] w-auto text-line" />
           </motion.div>
 
           {/* Versión desktop: una "página" que puede scrollear */}

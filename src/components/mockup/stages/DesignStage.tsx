@@ -2,7 +2,7 @@
 
 import { motion, useTransform, type MotionValue } from "motion/react";
 import { ArrowRight, Code2, LifeBuoy, PenTool } from "lucide-react";
-import { Sparkle } from "@/components/brand/Sparkle";
+import { Mark } from "@/components/brand/Mark";
 import { cn } from "@/lib/cn";
 import { G, boxStyle, stagger } from "../geometry";
 import { PetalArt } from "../parts/PetalArt";
@@ -105,8 +105,8 @@ export function DesignStage({
         className="absolute flex items-center rounded-[1.4cqw] border border-line/70 bg-bg/40 px-[2.2cqw]"
         style={{ ...boxStyle(G.nav), ...nav }}
       >
-        <span className="flex items-center gap-[0.8cqw] text-[1.8cqw] font-bold tracking-[0.18em]">
-          <Sparkle className="size-[2cqw] text-primary" />
+        <span className="flex items-center gap-[1cqw] text-[1.7cqw] font-medium tracking-[0.3em]">
+          <Mark className="h-[2.4cqw] w-auto text-fg" />
           MINTHERA
         </span>
         <span className="ml-auto flex items-center gap-[3cqw] text-[1.5cqw] text-muted">

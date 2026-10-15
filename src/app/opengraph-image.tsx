@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { brand } from "@/lib/brand";
+import { MARK_PATH, MARK_RATIO } from "@/components/brand/Mark";
 import { hero, meta } from "@/content/site";
 
 export const alt = meta.title;
@@ -35,9 +36,11 @@ export default function OpengraphImage() {
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 20 }}>
-          <Sparkle size={52} color={brand.primary} />
+          <svg width={Math.round(54 * MARK_RATIO)} height={54} viewBox="0 0 122.5 82.5">
+            <path d={MARK_PATH} fill={brand.fg} />
+          </svg>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <span style={{ fontSize: 34, fontWeight: 700, letterSpacing: 6 }}>MINTHERA</span>
+            <span style={{ fontSize: 34, fontWeight: 500, letterSpacing: 11 }}>MINTHERA</span>
             <span style={{ fontSize: 15, letterSpacing: 7, color: brand.muted, marginTop: 4 }}>
               DESARROLLO WEB
             </span>
