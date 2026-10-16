@@ -136,17 +136,16 @@ export const closing = {
   eyebrow: "¿ARRANCAMOS?",
   script: "Hagamos tu idea realidad",
   text: "Contanos qué tenés en mente y te respondemos con una propuesta a medida.",
-  cta: { label: "ESCRIBINOS", href: "mailto:hola@minthera.dev" },
+  cta: { label: "ESCRIBINOS", href: "mailto:mintheragroup@gmail.com" },
   contacts: [
-    { label: "minthera.dev", href: "https://minthera.dev", kind: "web" },
-    { label: "@minthera.dev", href: "https://instagram.com/minthera.dev", kind: "instagram" },
-    { label: "hola@minthera.dev", href: "mailto:hola@minthera.dev", kind: "email" },
+    { label: "@mintheragroup", href: "https://www.instagram.com/mintheragroup", kind: "instagram" },
+    { label: "mintheragroup@gmail.com", href: "mailto:mintheragroup@gmail.com", kind: "email" },
   ],
 } as const;
 
 export const footer = {
   line: brandLine,
-  legal: "© MINTHERA · minthera.dev",
+  legal: "© MINTHERA · @mintheragroup",
 };
 
 /**
