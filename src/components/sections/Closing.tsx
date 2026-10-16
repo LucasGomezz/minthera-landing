@@ -1,6 +1,6 @@
 import { AtSign, Globe, Mail } from "lucide-react";
 import { Eyebrow } from "@/components/ui/Eyebrow";
-import { PillButton } from "@/components/ui/PillButton";
+import { ContactCta } from "@/components/contact/ContactCta";
 import { Reveal } from "@/components/ui/Reveal";
 import { closing } from "@/content/site";
 import { ScriptUnderline } from "./ScriptUnderline";
@@ -33,9 +33,7 @@ export function Closing() {
 
         <p className="mt-12 max-w-[30rem] text-lg leading-relaxed text-muted">{closing.text}</p>
 
-        <PillButton href={closing.cta.href} size="lg" className="mt-10">
-          {closing.cta.label}
-        </PillButton>
+        <ContactCta label={closing.cta.label} className="mt-10" />
 
         <ul className="mt-14 flex flex-col items-center justify-center gap-x-3 gap-y-2 text-sm text-muted sm:flex-row sm:flex-wrap">
           {closing.contacts.map((contact, i) => {

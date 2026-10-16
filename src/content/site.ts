@@ -132,16 +132,41 @@ export const idealFor = {
   ],
 };
 
+/** Datos de contacto reales. */
+export const contact = {
+  email: "mintheragroup@gmail.com",
+  instagram: "https://www.instagram.com/mintheragroup",
+  /**
+   * WhatsApp en formato internacional, solo números (ej. "5491123456789").
+   * Vacío: el popup ofrece solo el mail.
+   */
+  whatsapp: "",
+};
+
 export const closing = {
   eyebrow: "¿ARRANCAMOS?",
   script: "Hagamos tu idea realidad",
   text: "Contanos qué tenés en mente y te respondemos con una propuesta a medida.",
-  cta: { label: "ESCRIBINOS", href: "mailto:mintheragroup@gmail.com" },
+  cta: { label: "ESCRIBINOS" },
   contacts: [
-    { label: "@mintheragroup", href: "https://www.instagram.com/mintheragroup", kind: "instagram" },
-    { label: "mintheragroup@gmail.com", href: "mailto:mintheragroup@gmail.com", kind: "email" },
+    { label: "@mintheragroup", href: contact.instagram, kind: "instagram" },
+    { label: contact.email, href: `mailto:${contact.email}`, kind: "email" },
   ],
 } as const;
+
+/** Popup de contacto que abre el botón "ESCRIBINOS". */
+export const contactForm = {
+  title: "Contanos tu idea",
+  lead: "Completá esto y elegí por dónde mandarlo: se abre con el mensaje ya escrito.",
+  topics: ["Landing page", "Sitio institucional", "Tienda online", "Rediseño", "Otro"],
+  messagePlaceholder: "Ej.: tengo una pastelería y quiero una web con el menú y pedidos por WhatsApp.",
+  subject: "Consulta desde la web",
+  sent: {
+    whatsapp: "Se abrió WhatsApp con tu mensaje. Solo falta tocar enviar.",
+    email: "Se abrió tu correo con el mensaje listo para enviar.",
+    fallback: "¿No se abrió nada? Copiá el mensaje y mandalo a",
+  },
+};
 
 export const footer = {
   line: brandLine,

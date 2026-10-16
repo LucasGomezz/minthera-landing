@@ -2,17 +2,20 @@ import { ArrowRight } from "lucide-react";
 import { cn } from "@/lib/cn";
 
 type PillButtonProps = {
-  href: string;
+  /** Con href es un link; sin href, un botón que llama a onClick. */
+  href?: string;
+  onClick?: () => void;
   children: string;
   size?: "md" | "lg";
   className?: string;
 };
 
 /** CTA principal: pill lavanda con texto oscuro y flecha lima en un círculo. */
-export function PillButton({ href, children, size = "md", className }: PillButtonProps) {
+export function PillButton({ href, onClick, children, size = "md", className }: PillButtonProps) {
+  const Tag = href ? "a" : "button";
   return (
-    <a
-      href={href}
+    <Tag
+      {...(href ? { href } : { type: "button" as const, onClick })}
       className={cn(
         "group inline-flex items-center gap-3 rounded-full bg-primary font-bold tracking-[0.16em] text-bg",
         "transition-[transform,box-shadow] duration-300 ease-out-expo",
@@ -34,6 +37,6 @@ export function PillButton({ href, children, size = "md", className }: PillButto
           className="size-4 transition-transform duration-300 ease-out-expo group-hover:translate-x-0.5"
         />
       </span>
-    </a>
+    </Tag>
   );
 }

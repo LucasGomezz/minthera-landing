@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useId, useRef, useState } from "react";
-import { ArrowUpRight, ChevronLeft, ChevronRight, X } from "lucide-react";
-import { useLenis } from "lenis/react";
+import { useId, useState } from "react";
+import { ArrowUpRight, ChevronLeft, ChevronRight } from "lucide-react";
+import { Modal, ModalClose } from "@/components/ui/Modal";
 import type { Project } from "@/content/site";
 import { cn } from "@/lib/cn";
 import { ViewStage } from "./ViewStage";
@@ -12,43 +12,12 @@ type ProjectDialogProps = {
   onClose: () => void;
 };
 
-/**
- * Popup con las vistas de un trabajo. Usa <dialog> nativo: atrapa el foco,
- * cierra con Esc y devuelve el foco a la tarjeta. Mientras está abierto se
- * frena Lenis para que la rueda no mueva la página de atrás.
- */
+/** Popup con las vistas de un trabajo. */
 export function ProjectDialog({ project, onClose }: ProjectDialogProps) {
-  const ref = useRef<HTMLDialogElement>(null);
-  const lenis = useLenis();
-
-  useEffect(() => {
-    const dialog = ref.current;
-    if (!dialog) return;
-    if (project && !dialog.open) {
-      dialog.showModal();
-      lenis?.stop();
-    } else if (!project && dialog.open) {
-      dialog.close();
-    }
-  }, [project, lenis]);
-
   return (
-    <dialog
-      ref={ref}
-      aria-labelledby="project-title"
-      data-lenis-prevent
-      onClose={() => {
-        lenis?.start();
-        onClose();
-      }}
-      // Click en el fondo (fuera de la tarjeta) cierra.
-      onClick={(e) => {
-        if (e.target === e.currentTarget) e.currentTarget.close();
-      }}
-      className="m-auto max-h-[calc(100dvh-2rem)] w-[min(100%-2rem,60rem)] max-w-none overflow-y-auto bg-transparent p-0 text-fg opacity-0 transition-[opacity,translate,display,overlay] transition-discrete duration-300 ease-out-expo backdrop:bg-bg/85 backdrop:opacity-0 backdrop:transition-[opacity,display,overlay] backdrop:transition-discrete backdrop:duration-300 open:opacity-100 open:backdrop:opacity-100 starting:open:translate-y-4 starting:open:opacity-0 starting:open:backdrop:opacity-0"
-    >
+    <Modal open={!!project} onClose={onClose} labelledBy="project-title">
       {project && <ProjectBody key={project.id} project={project} />}
-    </dialog>
+    </Modal>
   );
 }
 
@@ -72,16 +41,7 @@ function ProjectBody({ project }: { project: Project }) {
           </h3>
           <p className="mt-1 text-sm text-muted">{project.summary}</p>
         </div>
-        <form method="dialog" className="ml-auto shrink-0">
-          <button
-            type="submit"
-            aria-label="Cerrar"
-            autoFocus
-            className="grid size-9 place-items-center rounded-full border border-line text-muted transition-colors hover:border-primary/50 hover:text-fg"
-          >
-            <X aria-hidden="true" className="size-4" />
-          </button>
-        </form>
+        <ModalClose autoFocus />
       </div>
 
       {many && (
