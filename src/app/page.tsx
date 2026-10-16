@@ -3,6 +3,7 @@ import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { Closing } from "@/components/sections/Closing";
 import { IdealFor } from "@/components/sections/IdealFor";
+import { Work } from "@/components/sections/Work";
 import { BrowserMockup } from "@/components/mockup/BrowserMockup";
 import { CodePanel } from "@/components/mockup/CodePanel";
 import { Hero } from "@/components/sections/Hero";
@@ -39,6 +40,7 @@ export default function Home() {
             ))}
           </StoryLayout>
         </StoryProvider>
+        <Work />
         <IdealFor />
         <Closing />
       </main>

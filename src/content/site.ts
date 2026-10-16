@@ -148,3 +148,139 @@ export const footer = {
   line: brandLine,
   legal: "© MINTHERA · minthera.dev",
 };
+
+/**
+ * Una vista de un trabajo dentro del popup. Rutas dentro de /public; si falta
+ * una imagen se muestra un marcador.
+ * - "compare": antes y después con deslizador (secciones que ya existían).
+ * - "single": una sola captura (secciones nuevas o que no hace falta comparar).
+ * - "video": un video corto (.mp4 o .webm), sin sonido y en loop. `poster` es
+ *   la imagen que se ve mientras carga.
+ * `device: "phone"` muestra la captura o el video dentro de un celular.
+ */
+type Extras = { badge?: string; device?: "phone" };
+
+export type ProjectView =
+  | { kind: "compare"; label: string; before?: string; after?: string }
+  | ({ kind: "single"; label: string; image?: string } & Extras)
+  | ({ kind: "video"; label: string; src?: string; poster?: string } & Extras);
+
+export type Project = {
+  /** Identificador único; las imágenes van en /public/trabajos/<id>/ */
+  id: string;
+  name: string;
+  category: string;
+  /** Dominio que se muestra en la barra del navegador */
+  domain: string;
+  /** Link al sitio publicado (opcional) */
+  url?: string;
+  /** Una línea sobre qué se hizo */
+  summary: string;
+  /** Color de fondo de la previsualización */
+  accent: string;
+  /** Ruta dentro de /public. Si falta, se muestra el nombre. */
+  logo?: string;
+  /** Vistas del popup, en orden. */
+  views: ProjectView[];
+};
+
+export const work = {
+  eyebrow: "TRABAJOS",
+  title: "Webs que ya están online",
+  lead: "Abrí cualquiera: en los rediseños deslizás para comparar el antes y el después, y las webs nuevas las recorrés como si estuvieras ahí.",
+  projects: [
+    {
+      id: "ms-group",
+      name: "MS Group",
+      category: "Sitio institucional",
+      domain: "ms-group-theta.vercel.app",
+      url: "https://ms-group-theta.vercel.app/",
+      summary: "Rediseño completo de un sitio de los 2000 hecho en Flash: bilingüe, responsive y con una página por división.",
+      accent: "#eef1f5",
+      logo: "/trabajos/ms-group/logo.png",
+      views: [
+        {
+          kind: "compare",
+          label: "Inicio",
+          before: "/trabajos/ms-group/inicio-antes.jpg",
+          after: "/trabajos/ms-group/inicio-despues.jpg",
+        },
+        {
+          kind: "video",
+          label: "Recorrido",
+          src: "/trabajos/ms-group/recorrido.webm",
+          poster: "/trabajos/ms-group/inicio-despues.jpg",
+        },
+        {
+          kind: "compare",
+          label: "MS Shipping",
+          before: "/trabajos/ms-group/shipping-antes.jpg",
+          after: "/trabajos/ms-group/shipping-despues.jpg",
+        },
+        {
+          kind: "compare",
+          label: "MS Forwarding",
+          before: "/trabajos/ms-group/forwarding-antes.jpg",
+          after: "/trabajos/ms-group/forwarding-despues.jpg",
+        },
+        {
+          kind: "compare",
+          label: "MS Trading",
+          before: "/trabajos/ms-group/trading-antes.jpg",
+          after: "/trabajos/ms-group/trading-despues.jpg",
+        },
+        {
+          kind: "video",
+          label: "Celular",
+          src: "/trabajos/ms-group/celular.webm",
+          poster: "/trabajos/ms-group/celular.jpg",
+          device: "phone",
+          badge: "NUEVO",
+        },
+      ],
+    },
+    {
+      id: "coral-reef",
+      name: "Coral Reef",
+      category: "Landing page",
+      domain: "coralreefyoga.vercel.app",
+      url: "https://coralreefyoga.vercel.app/",
+      summary: "Landing bilingüe para clases de yoga en Malta, con reserva de clases privadas y grupales.",
+      accent: "#e9dfd6",
+      logo: "/trabajos/coral-reef/logo.png",
+      views: [
+        {
+          kind: "video",
+          label: "Recorrido",
+          src: "/trabajos/coral-reef/recorrido.webm",
+          poster: "/trabajos/coral-reef/inicio.jpg",
+          badge: "NUEVA",
+        },
+        { kind: "single", label: "Sobre mí", image: "/trabajos/coral-reef/sobre-mi.jpg" },
+        { kind: "single", label: "Clases", image: "/trabajos/coral-reef/clases.jpg" },
+        {
+          kind: "video",
+          label: "Celular",
+          src: "/trabajos/coral-reef/celular.webm",
+          poster: "/trabajos/coral-reef/celular.jpg",
+          device: "phone",
+        },
+      ],
+    },
+    {
+      id: "asistente-fauba",
+      name: "Asistente FAUBA",
+      category: "Chatbot con IA",
+      domain: "pdf-chatbot-front-five.vercel.app",
+      summary: "Asistente virtual para una cátedra de la Facultad de Agronomía (UBA): responde consultas usando solo el material que suben los docentes.",
+      accent: "#eef3ea",
+      logo: "/trabajos/asistente-fauba/logo.png",
+      views: [
+        { kind: "single", label: "Chat", image: "/trabajos/asistente-fauba/chat.jpg" },
+        { kind: "single", label: "Panel docente", image: "/trabajos/asistente-fauba/material.jpg" },
+        { kind: "single", label: "Ingreso", image: "/trabajos/asistente-fauba/ingreso.jpg" },
+        { kind: "single", label: "Celular", image: "/trabajos/asistente-fauba/celular.jpg", device: "phone" },
+      ],
+    },
+  ] satisfies Project[] as Project[],
+};
